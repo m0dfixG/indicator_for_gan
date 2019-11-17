@@ -9,9 +9,10 @@ import time
 
 
 class Indicator:
-	def __init__(self, func, data, post_func=None):
+	def __init__(self, func, data, clazz, post_func=None):
 		self.func = func
 		self.data = data
+		self.clazz = clazz
 		self.post_func = post_func
 	
 	def start(self, epochs, batch_size):
@@ -25,7 +26,13 @@ class Indicator:
 			count = 0
 			
 			while current_size < max_size:
-				dis, gen = self.func(self.data[current_size:min(current_size + batch_size, max_size)])
+				min_index = current_size
+				max_index = min(current_size + batch_size, max_size)
+
+				if clazz is not None:
+					dis, gen = self.func(self.data[min_index, max_index], self.clazz[min_index, max_index])
+				else:
+					dis, gen = self.func(self.data[min_index, max_index])
 		
 				sum_dis += dis
 				sum_gen += gen
