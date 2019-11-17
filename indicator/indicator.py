@@ -30,9 +30,9 @@ class Indicator:
 				max_index = min(current_size + batch_size, max_size)
 
 				if self.clazz is not None:
-					dis, gen = self.func(self.data[min_index, max_index], self.clazz[min_index, max_index])
+					dis, gen = self.func(self.data[min_index:max_index], self.clazz[min_index:max_index])
 				else:
-					dis, gen = self.func(self.data[min_index, max_index])
+					dis, gen = self.func(self.data[min_index:max_index])
 		
 				sum_dis += dis
 				sum_gen += gen
