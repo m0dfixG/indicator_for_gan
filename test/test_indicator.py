@@ -12,5 +12,5 @@ if __name__ == '__main__':
 
 	stub = np.arange(15000)
 
-	bar = Indicator(train, stub, (lambda : print('d')))
+	bar = Indicator(train, stub, None, (lambda : print('d')))
 	bar.start(100, 128)
