@@ -29,7 +29,7 @@ class Indicator:
 				min_index = current_size
 				max_index = min(current_size + batch_size, max_size)
 
-				if clazz is not None:
+				if self.clazz is not None:
 					dis, gen = self.func(self.data[min_index, max_index], self.clazz[min_index, max_index])
 				else:
 					dis, gen = self.func(self.data[min_index, max_index])
