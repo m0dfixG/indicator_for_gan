@@ -47,7 +47,7 @@ class Indicator:
 				mean_gen = sum_gen / count
 				remain_size = max(max_size - current_size, 0)
 				remain_time = timedelta(seconds=math.floor((time.time() - current_time) / current_size * remain_size))
-				print('\repoch:{} dis:{} gen:{} size:{} time:{}         '.format(epoch + 1, mean_dis, mean_gen, remain_size, remain_time), end='', flush=True)
+				print('\repoch:{} time:{} dis:{} gen:{} size:{}         '.format(epoch + 1, remain_time, mean_dis, mean_gen, remain_size), end='', flush=True)
 
 			print()
 			
